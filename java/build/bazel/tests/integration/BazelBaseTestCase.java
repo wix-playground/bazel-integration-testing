@@ -106,8 +106,12 @@ public abstract class BazelBaseTestCase {
    * Create a new workspace, previous one can still be used.
    */
   protected void newWorkspace() throws IOException {
-    this.workspace = java.nio.file.Files.createTempDirectory(tmp.toPath(), "workspace").toFile();
+    newWorkspaceWithoutWorkspaceFile();
     this.scratchFile("WORKSPACE");
+  }
+
+  protected void newWorkspaceWithoutWorkspaceFile() throws IOException {
+    this.workspace = java.nio.file.Files.createTempDirectory(tmp.toPath(), "workspace").toFile();
   }
 
   @Before
